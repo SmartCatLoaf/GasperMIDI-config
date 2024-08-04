@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GasperMIDI Config</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#2a2a2a" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/icon-512x512.png"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="theme-switch-wrapper">
+        <label for="theme-switch">Light theme</label>
+        <input type="checkbox" id="theme-switch" class="theme-checkbox" />
+      </div>
+      <h1>GasperMIDI Configuration</h1>
+      <div class="resolution-switch-wrapper">
+        <label for="resolution-select">Fader resolution:</label>
+        <select id="resolution-select">
+          <option value="7">Low (7bit)</option>
+          <option value="10">Mid (10bit)</option>
+          <option value="14">High (14bit)</option>
+        </select>
+      </div>
+    </header>
+
+    <main>
+      <div class="fader-container">
+        <div class="fader-group">
+          <div class="fader">
+            <div class="fader-track"></div>
+            <div class="fader-knob"></div>
+          </div>
+          <label for="cc-1">CC:</label>
+          <input type="number" id="cc-1" min="0" max="127" value="20" />
+        </div>
+        <div class="fader-group">
+          <div class="fader">
+            <div class="fader-track"></div>
+            <div class="fader-knob"></div>
+          </div>
+          <label for="cc-2">CC:</label>
+          <input type="number" id="cc-2" min="0" max="127" value="21" />
+        </div>
+        <div class="fader-group">
+          <div class="fader">
+            <div class="fader-track"></div>
+            <div class="fader-knob"></div>
+          </div>
+          <label for="cc-3">CC:</label>
+          <input type="number" id="cc-3" min="0" max="127" value="22" />
+        </div>
+      </div>
+      <button id="connect-arduino">Connect to Arduino</button>
+      <button id="save-config">Save Configuration</button>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
