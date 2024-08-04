@@ -10,67 +10,19 @@ if ("serviceWorker" in navigator) {
 
 // Theme Switching
 const themeSwitch = document.getElementById("theme-switch");
+document.body.classList.add("dark-mode"); // Set dark mode as default
+themeSwitch.checked = false; // Ensure checkbox is unchecked by default
 themeSwitch.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
   document.body.classList.toggle("light-mode");
 });
-
-// Fader Functionality
-const faders = document.querySelectorAll(".fader");
-faders.forEach((fader, index) => {
-  const knob = fader.querySelector(".fader-knob");
-  let isDragging = false;
-
-  knob.addEventListener("mousedown", startDragging);
-  document.addEventListener("mousemove", drag);
-  document.addEventListener("mouseup", stopDragging);
-
-  knob.addEventListener("touchstart", startDragging);
-  document.addEventListener("touchmove", drag);
-  document.addEventListener("touchend", stopDragging);
-
-  function startDragging(e) {
-    isDragging = true;
-    e.preventDefault();
-  }
-
-  function stopDragging() {
-    isDragging = false;
-  }
-
-  function drag(e) {
-    if (!isDragging) return;
-    const faderRect = fader.getBoundingClientRect();
-    const y = (e.clientY || e.touches[0].clientY) - faderRect.top;
-    let percentage = (faderRect.height - y) / faderRect.height;
-    percentage = Math.max(0, Math.min(1, percentage));
-    knob.style.top = `${(1 - percentage) * 100}%`;
-    console.log(`Fader ${index + 1}: ${Math.round(percentage * 127)}`);
-  }
-});
-
-// Arduino Connection
-let port;
-
-async function connectToArduino() {
-  try {
-    port = await navigator.serial.requestPort();
-    await port.open({ baudRate: 9600 });
-    console.log("Connected to Arduino");
-  } catch (error) {
-    console.error("Error connecting to Arduino:", error);
-  }
-}
-
-document
-  .getElementById("connect-arduino")
-  .addEventListener("click", connectToArduino);
 
 // Configuration Saving
 document
   .getElementById("save-config")
   .addEventListener("click", saveConfiguration);
 
-async function saveConfiguration() {
+function saveConfiguration() {
   const resolution = document.getElementById("resolution-select").value;
   const cc1 = document.getElementById("cc-1").value;
   const cc2 = document.getElementById("cc-2").value;
@@ -82,11 +34,12 @@ async function saveConfiguration() {
   };
 
   console.log("Saving configuration:", config);
-
-  if (port && port.writable) {
-    const writer = port.writable.getWriter();
-    const encoder = new TextEncoder();
-    await writer.write(encoder.encode(JSON.stringify(config)));
-    writer.releaseLock();
-  }
+  // Here you would send this configuration to the Arduino
+  // using Web Serial API or another method
 }
+
+// Arduino Connection (only for demonstration, won't work locally)
+document.getElementById("connect-arduino").addEventListener("click", () => {
+  console.log("Attempting to connect to Arduino...");
+  // Actual connection code would go here
+});

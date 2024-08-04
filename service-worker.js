@@ -1,12 +1,11 @@
 const CACHE_NAME = "gaspermidi-cache-v1";
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/script.js",
-  "/manifest.json",
-  "/icon-192x192.png",
-  "/icon-512x512.png",
+  "./index.html",
+  "./style.css",
+  "./script.js",
+  "./manifest.json",
+  "./icon-192x192.png",
+  "./icon-512x512.png",
 ];
 
 self.addEventListener("install", (event) => {
