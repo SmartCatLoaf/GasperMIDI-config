@@ -30,7 +30,7 @@ faders.forEach((fader, index) => {
 
   function startDragging(e) {
     isDragging = true;
-    e.preventDefault(); // Prevent text selection
+    e.preventDefault();
   }
 
   function stopDragging() {
@@ -44,7 +44,6 @@ faders.forEach((fader, index) => {
     let percentage = (faderRect.height - y) / faderRect.height;
     percentage = Math.max(0, Math.min(1, percentage));
     knob.style.top = `${(1 - percentage) * 100}%`;
-    // Here you would send MIDI data based on the fader position
     console.log(`Fader ${index + 1}: ${Math.round(percentage * 127)}`);
   }
 });
@@ -57,7 +56,6 @@ async function connectToArduino() {
     port = await navigator.serial.requestPort();
     await port.open({ baudRate: 9600 });
     console.log("Connected to Arduino");
-    // Setup input and output streams here
   } catch (error) {
     console.error("Error connecting to Arduino:", error);
   }
@@ -92,7 +90,3 @@ async function saveConfiguration() {
     writer.releaseLock();
   }
 }
-
-// You may want to add more functions here to handle:
-// - Receiving confirmation from the Arduino
-// - Updating the UI based on Arduino responses
