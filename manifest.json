@@ -2,18 +2,18 @@
   "name": "GasperMIDI Config",
   "short_name": "GasperMIDI",
   "description": "Custom MIDI Controller Configuration App",
-  "start_url": "/GasperMIDI-config/index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#3a3a3a",
   "theme_color": "#2a2a2a",
   "icons": [
     {
-      "src": "/GasperMIDI-config/icon-192x192.png",
+      "src": "/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/GasperMIDI-config/icon-512x512.png",
+      "src": "/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
