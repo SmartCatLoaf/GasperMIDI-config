@@ -2,8 +2,11 @@
 function setupInputLimits(inputId, min, max) {
   const input = document.getElementById(inputId);
   input.addEventListener("input", function () {
-    if (this.value > max) this.value = max;
-    if (this.value < min) this.value = min;
+    this.value = this.value.replace(/[^0-9]/g, "");
+    if (this.value === "") return;
+    let num = parseInt(this.value);
+    if (num > max) this.value = max;
+    if (num < min) this.value = min;
   });
 }
 setupInputLimits("cc-1", 0, 127);
@@ -19,12 +22,12 @@ themeSwitch.addEventListener("change", () => {
   document.body.classList.toggle("light-mode");
 });
 
-// Configuration Saving
+// Configuration Sending
 document
-  .getElementById("save-config")
-  .addEventListener("click", saveConfiguration);
+  .getElementById("send-config")
+  .addEventListener("click", sendConfiguration);
 
-function saveConfiguration() {
+function sendConfiguration() {
   const resolution = document.getElementById("resolution-select").value;
   const cc1 = document.getElementById("cc-1").value;
   const cc2 = document.getElementById("cc-2").value;
@@ -35,7 +38,8 @@ function saveConfiguration() {
     ccValues: [parseInt(cc1), parseInt(cc2), parseInt(cc3)],
   };
 
-  console.log("Saving configuration:", config);
+  console.log("Sending configuration:", config);
+  alert("Sending configuration");
   // Here you would send this configuration to the Arduino
   // using Web Serial API or another method
 }
@@ -43,6 +47,6 @@ function saveConfiguration() {
 // Arduino Connection (only for demonstration, won't work locally)
 document.getElementById("connect-arduino").addEventListener("click", () => {
   console.log("Attempting to connect to Arduino...");
-  alert("Connection failed. PLease try again");
+  alert("Attempting to connect to Arduino...");
   // Actual connection code would go here
 });

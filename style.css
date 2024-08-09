@@ -210,7 +210,7 @@ body.light-mode input[type="number"]:focus {
 }
 
 #connect-arduino,
-#save-config {
+#send-config {
   padding: 0.8rem 1.5rem;
   margin: 0 2rem;
   font-family: "Orbitron", sans-serif;
@@ -224,30 +224,30 @@ body.light-mode input[type="number"]:focus {
 }
 
 #connect-arduino:hover,
-#save-config:hover {
+#send-config:hover {
   background-color: #45a049;
   transform: scale(1.05);
 }
 
 #connect-arduino:focus,
-#save-config:focus {
+#send-config:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
 }
 
 body.light-mode #connect-arduino,
-body.light-mode #save-config {
+body.light-mode #send-config {
   background-color: #2196f3;
   color: white;
 }
 
 body.light-mode #connect-arduino:hover,
-body.light-mode #save-config:hover {
+body.light-mode #send-config:hover {
   background-color: #1e88e5;
 }
 
 body.light-mode #connect-arduino:focus,
-body.light-mode #save-config:focus {
+body.light-mode #send-config:focus {
   box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.5);
 }
 
@@ -267,7 +267,7 @@ body.light-mode #save-config:focus {
   }
 
   #connect-arduino,
-  #save-config {
+  #send-config {
     padding: 0.6rem 1.2rem;
     margin: 1rem 0;
     font-size: 1rem;
