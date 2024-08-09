@@ -56,14 +56,15 @@ h1 {
 }
 
 main {
-  padding: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-
-  height: calc(
-    100vh - 120px
-  ); /* Adjust this value based on your header height */
-  overflow-y: auto;
+  main {
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    height: calc(100vh - 120px); /* Adjust based on your header height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 .theme-switch-wrapper,
@@ -114,6 +115,7 @@ body.light-mode #resolution-select:hover {
   justify-content: space-around;
   align-items: center;
   margin-top: 2rem;
+  height: 250px;
 }
 
 .fader-group {
@@ -201,6 +203,49 @@ body.light-mode input[type="number"]:focus {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+.connect-arduino-btn,
+.save-config-btn {
+  margin: 1rem 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  background-color: var(--button-bg-dark);
+  color: var(--text-color-dark);
+  border: 1px solid var(--button-border-dark);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.connect-arduino-btn:hover,
+.save-config-btn:hover {
+  background-color: var(--button-hover-bg-dark);
+}
+
+.connect-arduino-btn:focus,
+.save-config-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+body.light-mode .connect-arduino-btn,
+body.light-mode .save-config-btn {
+  background-color: var(--button-bg-light);
+  color: var(--text-color-light);
+  border: 1px solid var(--button-border-light);
+}
+
+body.light-mode .connect-arduino-btn:hover,
+body.light-mode .save-config-btn:hover {
+  background-color: var(--button-hover-bg-light);
+}
+
+body.light-mode .connect-arduino-btn:focus,
+body.light-mode .save-config-btn:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 1.8rem;
@@ -214,6 +259,8 @@ body.light-mode input[type="number"]:focus {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 10px;
+    height: 180px; /* Adjust this value as needed */
+    margin-top: 1rem;
   }
 
   .fader-group {
