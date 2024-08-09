@@ -5,21 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>GasperMIDI Controller</title>
     <link rel="stylesheet" href="/style.css" />
-    <link rel="manifest" href="/manifest.json" />
+    <link
+      rel="canonical"
+      href="https://SmartCatLoaf.github.io/GasperMIDI-config/"
+    />
+    <link rel="manifest" href="/GasperMIDI-config/manifest.webmanifest" />
     <meta name="theme-color" content="#2a2a2a" />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/icon-512x512.png"
-    />
   </head>
   <body>
     <header>
@@ -68,6 +59,17 @@
       <button id="connect-arduino">Connect to Arduino</button>
       <button id="save-config">Save Configuration</button>
     </main>
+
+    <script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker
+          .register("/GasperMIDI-config/service-worker.js", {
+            scope: "/GasperMIDI-config/",
+          })
+          .then((reg) => console.log("service worker registered"))
+          .catch((err) => console.log("service worker not registered", err));
+      }
+    </script>
 
     <script src="/script.js"></script>
   </body>
