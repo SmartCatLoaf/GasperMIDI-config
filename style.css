@@ -21,6 +21,9 @@ body {
   background: var(--bg-gradient-dark);
   color: var(--text-color-dark);
   transition: background-color 0.5s ease, color 0.5s ease;
+
+  height: 100vh;
+  overflow: hidden;
 }
 
 body.light-mode {
@@ -56,6 +59,11 @@ main {
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+
+  height: calc(
+    100vh - 120px
+  ); /* Adjust this value based on your header height */
+  overflow-y: auto;
 }
 
 .theme-switch-wrapper,
@@ -148,6 +156,13 @@ body.light-mode #resolution-select:hover {
   transform: translate(-50%, -50%) scale(1.1);
 }
 
+.content-wrapper {
+  height: calc(
+    100vh - 120px
+  ); /* Adjust this value based on your header height */
+  overflow-y: auto;
+}
+
 label {
   margin-bottom: 0.5rem;
 }
@@ -196,21 +211,28 @@ body.light-mode input[type="number"]:focus {
   }
 
   .fader-container {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px;
   }
 
   .fader-group {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
   }
 
   .fader {
-    width: 40px;
-    height: 150px;
+    width: 30px;
+    height: 120px;
   }
 
   .fader-knob {
-    width: 30px;
-    height: 15px;
+    width: 25px;
+    height: 12px;
+  }
+
+  input[type="number"] {
+    width: 40px;
+    font-size: 0.8rem;
   }
 }
 
