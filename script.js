@@ -1,3 +1,15 @@
+//Input limiting
+function setupInputLimits(inputId, min, max) {
+  const input = document.getElementById(inputId);
+  input.addEventListener("input", function () {
+    if (this.value > max) this.value = max;
+    if (this.value < min) this.value = min;
+  });
+}
+setupInputLimits("cc-1", 0, 127);
+setupInputLimits("cc-2", 0, 127);
+setupInputLimits("cc-3", 0, 127);
+
 // Theme Switching
 const themeSwitch = document.getElementById("theme-switch");
 document.body.classList.add("dark-mode"); // Set dark mode as default
@@ -31,5 +43,6 @@ function saveConfiguration() {
 // Arduino Connection (only for demonstration, won't work locally)
 document.getElementById("connect-arduino").addEventListener("click", () => {
   console.log("Attempting to connect to Arduino...");
+  alert("Connection failed. PLease try again");
   // Actual connection code would go here
 });
