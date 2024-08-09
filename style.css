@@ -203,47 +203,52 @@ body.light-mode input[type="number"]:focus {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-.connect-arduino-btn,
-.save-config-btn {
-  margin: 1rem 0.5rem;
-  padding: 0.5rem 1rem;
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+#connect-arduino,
+#save-config {
+  padding: 0.8rem 1.5rem;
+  margin: 0 1rem;
   font-family: "Orbitron", sans-serif;
-  font-size: 1rem;
-  background-color: var(--button-bg-dark);
-  color: var(--text-color-dark);
-  border: 1px solid var(--button-border-dark);
-  border-radius: 4px;
+  font-size: 1.2rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.connect-arduino-btn:hover,
-.save-config-btn:hover {
-  background-color: var(--button-hover-bg-dark);
+#connect-arduino:hover,
+#save-config:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 
-.connect-arduino-btn:focus,
-.save-config-btn:focus {
+#connect-arduino:focus,
+#save-config:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
 }
 
-body.light-mode .connect-arduino-btn,
-body.light-mode .save-config-btn {
-  background-color: var(--button-bg-light);
-  color: var(--text-color-light);
-  border: 1px solid var(--button-border-light);
+body.light-mode #connect-arduino,
+body.light-mode #save-config {
+  background-color: #2196f3;
+  color: white;
 }
 
-body.light-mode .connect-arduino-btn:hover,
-body.light-mode .save-config-btn:hover {
-  background-color: var(--button-hover-bg-light);
+body.light-mode #connect-arduino:hover,
+body.light-mode #save-config:hover {
+  background-color: #1e88e5;
 }
 
-body.light-mode .connect-arduino-btn:focus,
-body.light-mode .save-config-btn:focus {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+body.light-mode #connect-arduino:focus,
+body.light-mode #save-config:focus {
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.5);
 }
 
 @media screen and (max-width: 600px) {
@@ -253,6 +258,21 @@ body.light-mode .save-config-btn:focus {
 
   main {
     padding: 1rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  #connect-arduino,
+  #save-config {
+    padding: 0.6rem 1.2rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    width: 80%;
+    max-width: 250px;
   }
 
   .fader-container {
