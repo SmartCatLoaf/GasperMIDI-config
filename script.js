@@ -34,7 +34,7 @@ async function sendConfiguration() {
     console.log("Web Serial API is supported in this browser.");
     try {
       const port = await navigator.serial.requestPort();
-      await port.open({ baudRate: 115200 }); // Changed to 115200, make sure to match this in Arduino code
+      await port.open({ baudRate: 9600 });
 
       const encoder = new TextEncoder();
       const writer = port.writable.getWriter();
