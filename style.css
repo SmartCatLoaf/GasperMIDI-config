@@ -207,7 +207,7 @@ body.light-mode input[type="number"]:focus {
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 12rem; /* Increased from 8rem */
+  margin-top: 6rem; /* Increased from 8rem */
 }
 
 #send-config {
@@ -257,7 +257,7 @@ body.light-mode #send-config:focus {
   }
 
   .button-container {
-    margin-top: 6rem;
+    margin-top: 3rem;
   }
 
   #send-config {
@@ -271,8 +271,8 @@ body.light-mode #send-config:focus {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 10px;
-    height: 180px; /* Adjust this value as needed */
-    margin-top: 1rem;
+    height: 280px; /* Increased to accommodate larger faders */
+    margin-top: 2rem; /* Added more top margin */
   }
 
   .fader-group {
@@ -280,13 +280,13 @@ body.light-mode #send-config:focus {
   }
 
   .fader {
-    width: 30px;
-    height: 120px;
+    width: 60px; /* Increased width */
+    height: 200px; /* Increased to 200px as requested */
   }
 
   .fader-knob {
-    width: 25px;
-    height: 12px;
+    width: 40px; /* Increased width */
+    height: 20px; /* Increased height */
   }
 
   input[type="number"] {
