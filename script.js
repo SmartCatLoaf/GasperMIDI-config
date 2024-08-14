@@ -27,24 +27,66 @@ document
   .getElementById("send-config")
   .addEventListener("click", sendConfiguration);
 
-function sendConfiguration() {
-  console.log("Attempting to connect to Arduino...");
-  alert("Attempting to connect to Arduino...");
-  // Actual connection code would go here
-  //IF the connection was succesful --->
+async function sendConfiguration() {
+  console.log("Attempting to send configuration...");
 
-  const resolution = document.getElementById("resolution-select").value;
-  const cc1 = document.getElementById("cc-1").value;
-  const cc2 = document.getElementById("cc-2").value;
-  const cc3 = document.getElementById("cc-3").value;
+  if ("serial" in navigator) {
+    console.log("Web Serial API is supported in this browser.");
+    try {
+      const port = await navigator.serial.requestPort();
+      await port.open({ baudRate: 115200 }); // Changed to 115200, make sure to match this in Arduino code
 
-  const config = {
-    resolution: resolution === "7" ? 0 : resolution === "10" ? 1 : 2,
-    ccValues: [parseInt(cc1), parseInt(cc2), parseInt(cc3)],
-  };
+      const encoder = new TextEncoder();
+      const writer = port.writable.getWriter();
 
-  console.log("Sending configuration:", config);
-  alert("Sending configuration");
-  // Here you would send this configuration to the Arduino
-  // using Web Serial API or another method
+      const resolution = document.getElementById("resolution-select").value;
+      const cc1 = document.getElementById("cc-1").value;
+      const cc2 = document.getElementById("cc-2").value;
+      const cc3 = document.getElementById("cc-3").value;
+
+      const config = {
+        resolution: resolution === "7" ? 0 : resolution === "10" ? 1 : 2,
+        ccValues: [parseInt(cc1), parseInt(cc2), parseInt(cc3)],
+      };
+
+      const data = JSON.stringify(config);
+      console.log("Sending configuration:", data);
+
+      await writer.write(encoder.encode(data));
+
+      writer.releaseLock();
+      await port.close();
+
+      console.log("Configuration successfully sent!");
+      alert("Configuration successfully sent to Arduino!");
+    } catch (error) {
+      console.error("Error in sending configuration:", error);
+      alert(
+        "Failed to connect to Arduino. Make sure it's connected and try again. If the problem persists, try using a different USB port or cable."
+      );
+    }
+  } else {
+    console.log("Web Serial API is not supported in this browser.");
+    alert(
+      "Web Serial API is not supported in this browser. Please use a desktop version of Chrome, Edge, or Opera to configure your MIDI controller."
+    );
+  }
 }
+
+// Check for WebSerialAPI support
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  if ("serial" in navigator) {
+    console.log("Web Serial API IS supported in this browser.");
+    document.getElementById("send-config").style.display = "block";
+  } else {
+    console.log("Web Serial API is NOT supported in this browser.");
+    const warningElement = document.createElement("p");
+    warningElement.textContent =
+      "Web Serial API is not supported in this browser. Please use a desktop version of Chrome, Edge, or Opera to configure your MIDI controller.";
+    warningElement.style.color = "red";
+    warningElement.style.fontWeight = "bold";
+    document.querySelector(".button-container").appendChild(warningElement);
+    document.getElementById("send-config").style.display = "none";
+  }
+});
