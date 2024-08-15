@@ -86,6 +86,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
       "Web Serial API is not supported in this browser. Please use a desktop version of Chrome, Edge, or Opera to configure your MIDI controller.";
     warningElement.style.color = "red";
     warningElement.style.fontWeight = "bold";
+    warningElement.style.textAlign = "center";
+    warningElement.style.width = "100%";
+    warningElement.style.padding = "10px 0";
     document.querySelector(".button-container").appendChild(warningElement);
     document.getElementById("send-config").style.display = "none";
   }
