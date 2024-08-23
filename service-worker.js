@@ -5,7 +5,7 @@ var APP_PREFIX = "gpmc_";
 // you need to change this version (version_01, version_02…).
 // If you don't change the version, the service worker will give your
 // users the old files!
-var VERSION = "version_00";
+var VERSION = "version_01";
 
 var URLS = [
   `${GHPATH}/`,
@@ -13,8 +13,9 @@ var URLS = [
   `${GHPATH}/styles.css`,
   `${GHPATH}/script.js`,
   `${GHPATH}/manifest.webmanifest`,
-  `${GHPATH}/icon-192x192.png`,
-  `${GHPATH}/icon-512x512.png`,
+  `${GHPATH}/icons/icon-192x192.png`,
+  `${GHPATH}/icons/icon-512x512.png`,
+  `${GHPATH}/icons/apple-touch-icon.png`,
 ];
 
 // install event

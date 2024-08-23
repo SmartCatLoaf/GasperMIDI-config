@@ -1,17 +1,32 @@
-//Input limiting
 function setupInputLimits(inputId, min, max) {
   const input = document.getElementById(inputId);
+  const resolutionSelect = document.getElementById("resolution-select");
+
   input.addEventListener("input", function () {
     this.value = this.value.replace(/[^0-9]/g, "");
     if (this.value === "") return;
     let num = parseInt(this.value);
-    if (num > max) this.value = max;
+
+    const currentResolution = resolutionSelect.value;
+    const maxValue = currentResolution === "7" ? 127 : 32;
+
+    if (num > maxValue) this.value = maxValue;
     if (num < min) this.value = min;
   });
 }
-setupInputLimits("cc-1", 0, 127);
-setupInputLimits("cc-2", 0, 127);
-setupInputLimits("cc-3", 0, 127);
+
+setupInputLimits("cc-1", 0);
+setupInputLimits("cc-2", 0);
+setupInputLimits("cc-3", 0);
+
+// Update limits when resolution changes
+document
+  .getElementById("resolution-select")
+  .addEventListener("change", function () {
+    setupInputLimits("cc-1", 0);
+    setupInputLimits("cc-2", 0);
+    setupInputLimits("cc-3", 0);
+  });
 
 // Theme Switching
 const themeSwitch = document.getElementById("theme-switch");
