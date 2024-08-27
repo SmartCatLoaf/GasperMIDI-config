@@ -15,6 +15,20 @@ function setupInputLimits(inputId, min, max) {
   });
 }
 
+function updateInputValues() {
+  const resolutionSelect = document.getElementById("resolution-select");
+  const currentResolution = resolutionSelect.value;
+  const maxValue = currentResolution === "7" ? 127 : 32;
+
+  ["cc-1", "cc-2", "cc-3"].forEach((id) => {
+    const input = document.getElementById(id);
+    const currentValue = parseInt(input.value);
+    if (currentValue > maxValue) {
+      input.value = maxValue;
+    }
+  });
+}
+
 setupInputLimits("cc-1", 0);
 setupInputLimits("cc-2", 0);
 setupInputLimits("cc-3", 0);
@@ -26,6 +40,7 @@ document
     setupInputLimits("cc-1", 0);
     setupInputLimits("cc-2", 0);
     setupInputLimits("cc-3", 0);
+    updateInputValues();
   });
 
 // Theme Switching
